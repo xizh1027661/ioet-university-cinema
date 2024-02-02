@@ -16,7 +16,7 @@ header > nav {
     grid-template-columns: 25% 50% 25%;
     width: 100%;
     height: auto;
-    padding: 5px;
+    padding: 5px 0px;
     place-items: center;
 }
 
@@ -122,7 +122,7 @@ div.filter div select {
     border-color: grey;
     padding: 0px 10px;
     border-radius: 20px;
-    width: 200px;
+    width: 100%;
 }
 
 
@@ -131,7 +131,6 @@ div.filter div select {
 /* movies */
 h1 {
     width: 100%;
-    padding-left: 9%;
     font-size: xx-large;
     color: #808080;
     font-weight: lighter;
@@ -193,3 +192,11 @@ footer div.apps > img {
     margin: 3% 10px
     
 }
+
+@media (max-width: 500px) {
+    div.banner {
+        height: 100px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+    }
