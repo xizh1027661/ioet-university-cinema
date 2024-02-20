@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/global.css"/>
+    <title>Document</title>
+    <script src="../javascript/constants.js"></script>
+    <script src="../javascript/get-movie.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="about-us">
+            <div class="social-media">
+                <img src="../resources/icons/facebook.png">
+                <img src="../resources/icons/twitter.png">
+                <img src="../resources/icons/instagram.png">
+            </div>
+            <div></div>
+            <div class="login">
+                <button class="sign-up">Sign Up</button>
+                <button class="log-in">Log in</button>
+            </div>
+        </nav>
+        <nav class="shop-options">
+            <img class="logo" src="../resources/images/cinemark_logo.png" />
+            <nav class="options">
+                <h3>Billboard</h3>
+                <h3>Theaters</h3>
+                <h3>Snackbar</h3>
+                <h3>Promotions</h3>
+            </nav>
+        </nav>
+    </header>
+
+    <div class="banner">
+        <button class="more-information">More Information</button>
+    </div>
+
+    <div class="filter">
+        <div class="city-filter">
+            <h3>You are in:</h2>
+            <select required aria-placeholder="Value2">
+                <option value="None" hidden>None</option>
+                <option value="value2">Value 2</option>
+                <option value="value3">Value 3</option>
+            </select>
+        </div>
+        <div class="local-filter">
+            <h3>Theaters:</h2>
+            <select required aria-placeholder="Value2">
+                <option value="None" hidden>None</option>
+                <option value="value2">Value 2</option>
+                <option value="value3">Value 3</option>
+            </select>
+        </div>
+    </div>
+
+    <h1>One Hundred and One Dalmatians</h1>
+    <div class="movie-details" id="movie-details">
+        <!-- // Your html code -->
+    </div>
+</body>
+<script type="module">
+    import { get_movie } from "../javascript/get-movie.js";
+
+    const createImag = (movie) => {
+        const imag = movie.primaryImage.url
+        const alternativeText = movie.primaryImage.caption.plainText
+        const imgElement = document.createElement("img");
+        imgElement.src = imag
+        imgElement.alt = alternativeText
+        return imgElement  
+    }
+
+    const createDataCard = (movie) => {
+        const movieData = movie;
+        const movieTitle = movie.titleText.text;
+        const movieGenres = movie.genres.genres;
+        const movieSinopsis = movie.plot.plotText.plainText;
+        const movieDurationInHours = Math.floor(movie.runtime.seconds/3600);
+        const movieDurationInMinutes = Math.floor((movie.runtime.seconds%3600)/60);
+        const movieTotalDuration =
+        movieDurationInHours.toString() + ":" + movieDurationInMinutes.toString();
+
+        const dataCard = document.createElement("dl");
+
+        const dtForName = document.createElement('dt');
+        const boldName = document.createElement('b');
+        boldName.textContent = 'Name';
+        const ddForName = document.createElement('dd');
+        ddForName.textContent = movieTitle;
+
+        dtForName.appendChild(boldName);
+        dataCard.appendChild(dtForName);
+        dataCard.appendChild(ddForName);
+
+        const dtForGenres = document.createElement('dt');
+        const boldGenre = document.createElement('b');
+        boldGenre.textContent = 'Genres';
+        dtForGenres.appendChild(boldGenre);
+        dataCard.appendChild(dtForGenres);
+        for (const movieGenre of movieGenres) {
+            const ddForGenres = document.createElement('dd');
+            ddForGenres.textContent = movieGenre.text;
+            dataCard.appendChild(ddForGenres);
+        }
+
+        const dtForSinopsis = document.createElement('dt');
+        const boldSinopsis = document.createElement('b');
+        boldSinopsis.textContent = 'Sinopsis';
+        const ddForSinopsis = document.createElement('dd');
+        ddForSinopsis.textContent = movieSinopsis;
+
+        dtForSinopsis.appendChild(boldSinopsis);
+        dataCard.appendChild(dtForSinopsis);
+        dataCard.appendChild(ddForSinopsis);
+
+        const dtForDuration = document.createElement('dt');
+        const boldDuration = document.createElement('b');
+        boldDuration.textContent = 'Duration';
+        const ddForDuration = document.createElement('dd');
+        ddForDuration.textContent = movieTotalDuration;
+
+        dtForDuration.appendChild(boldDuration);
+        dataCard.appendChild(dtForDuration);
+        dataCard.appendChild(ddForDuration);
+
+        return dataCard;
+    }
+
+
+    get_movie('tt0055254')
+        .then((movie) => {
+            const container = document.createElement("div");
+            container.className = "movie-container";
+
+            const imgElement = createImag(movie);
+            container.appendChild(imgElement);
+
+            const dataCardElement = createDataCard(movie);
+            container.appendChild(dataCardElement);
+            console.log(container)
+
+            const element = document.getElementById("movie-details");
+            element.appendChild(container);
+        });
+</script>
+<footer>
+    <div class="about-us">
+        <h2>About</h2>
+        <h3>Who are we?</h3>
+        <h3>Terms and Conditions</h3>
+    </div>
+    <div class="contact-us">
+        <h2>Contact us</h2>
+        <h3>FAQs</h3>
+    </div>
+    <div class="maketing-empresarial">
+        <h2>Marketing</h2>
+        <h3>Services</h3>
+    </div>
+    <div class="downloads">
+        <h2>Download our App</h2>
+    </div>
+    <div class="apps">
+        <img src="../resources/icons/facebook-red.png" alt="">
+        <img src="../resources/icons/twitter-red.png" alt="">
+        <img src="../resources/icons/instagram-red.png" alt="">
+    </div>
+</footer>
+</html>
