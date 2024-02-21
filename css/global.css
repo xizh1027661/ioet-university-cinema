@@ -166,6 +166,29 @@ div.movie-list div.poster-container button{
     border-color: darkred;
 }
 
+/*One hundred and one dalmatians*/
+div.movie-details div.movie-container{
+    display: flex;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+div.movie-details div.movie-container img{
+    display: flex;
+    width: 25%;
+    height: 50%;
+}
+
+div.movie-details div.movie-container dl{
+    display: flex;
+    flex-direction: column;
+}
+
+dl {
+    display: flex;
+    justify-content: space-between;
+}
 
 /* footer */
 footer {
