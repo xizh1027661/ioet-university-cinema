@@ -58,9 +58,7 @@
     </div>
 
     <h1>One Hundred and One Dalmatians</h1>
-    <div class="movie-details" id="movie-details">
-        <!-- // Your html code -->
-    </div>
+    <div class="movie-details" id="movie-details"></div>
 </body>
 <script type="module">
     import { get_movie } from "../javascript/get-movie.js";
@@ -141,7 +139,6 @@
 
             const dataCardElement = createDataCard(movie);
             container.appendChild(dataCardElement);
-            console.log(container)
 
             const element = document.getElementById("movie-details");
             element.appendChild(container);
