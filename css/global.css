@@ -66,6 +66,7 @@ nav.shop-options {
 
 .logo {
     height: 18px;
+    
 }
 
 nav.options > h3 {
@@ -78,8 +79,9 @@ nav.options > h3 {
 
 /*banner */
 div.banner {
+    background-size: contain;
     display: flex;
-    height: 400px;
+    height: 318px;
     background-image: url("../resources/images/banner.jpg");
     align-items: end;
 }
@@ -139,6 +141,7 @@ h1 {
 
 /*movie-list */
 div.movie-list{
+    background-size: contain;
     display: grid;
     grid-template-columns: 
         repeat(

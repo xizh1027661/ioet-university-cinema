@@ -25,6 +25,7 @@
         </nav>
         <nav class="shop-options">
             <img class="logo" src="../resources/images/cinemark_logo.png" />
+            
             <nav class="options">
                 <h3>Billboard</h3>
                 <h3>Theaters</h3>
@@ -37,7 +38,7 @@
 
     <div class="banner">
             <button class="more-information">More Information</button>
-        </div>
+    </div>
 
     <div class="filter">
         <div class="city-filter">
@@ -94,6 +95,22 @@
                 element.appendChild(container);
             })
         });
+
+
+//*<div id="container"></div>*/        
+const container = document.getElementById("container")
+
+function renderImages() {
+    
+    getImgs += `<img scr="../resources/images/cinemark_logo.png">`
+    
+    container.innerHTML = getImgs
+}
+
+renderImages()
+
+
+
 </script>
 <footer>
     <div class="about-us">
